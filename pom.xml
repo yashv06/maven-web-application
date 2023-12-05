@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://13.233.186.8:9036/nexus/repository/yash-release/</url>
+	      <url>http://13.233.186.8:9036/nexus/repository/facebook-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://13.233.186.8:9036/nexus/repository/yash-snapshot/</url>
+	      <name>Mithun Technologies Snapshot Nexus Repository</name>
+	      <url>http://13.233.186.8:9036/nexus/repository/facebook-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
