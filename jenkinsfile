@@ -1,0 +1,38 @@
+node{
+
+def mavenHome = tool name: "Maven3.9.6" //creating maven variable
+
+//gitStage 
+stage('checkoutCode')
+{
+git branch: 'development', credentialsId: '82b858b3-a61b-48b8-9122-67318488da68', url: 'https://github.com/yashv06/maven-web-application.git'
+} //git stage closing
+
+//build stage
+stage('Build')
+{
+sh "$mavenHome/bin/mvn clean package" //bat if jenkins is running on windows, sh for MAC/Linux
+} //build stage closing 
+
+//sonarqube stage
+stage ('Sonarqube')
+{
+sh "$mavenHome/bin/mvn sonar:sonar"
+}
+
+//nexus stage
+stage ('Nexus')
+{
+sh "$mavenHome/bin/mvn deploy"
+}
+
+//tomcat
+
+stage ('tomcat')
+{
+sshagent(['39a0cead-2003-441d-a7da-a190bb998a0e']) {
+    // some block
+sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.2.166.24:/opt/apache-tomcat-10.1.16/webapps"
+}
+}
+} //node closing
