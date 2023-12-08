@@ -1,5 +1,5 @@
 node{
-
+buildName 'Dev - $BUILD_NUMBER'
 def mavenHome = tool name: "Maven3.9.6" //creating maven variable
 
 //gitStage 
